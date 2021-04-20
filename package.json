@@ -4,6 +4,7 @@
   "description": "*description*",
   "main": "src/index.js",
   "scripts": {
+    "test": "eslint src",
     "start": "NODE_ENV=development webpack serve",
     "build": "npm run clean; NODE_ENV=production webpack",
     "clean": "rimraf dist"
