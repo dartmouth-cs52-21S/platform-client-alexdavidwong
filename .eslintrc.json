@@ -24,8 +24,5 @@
           "DebuggerStatement"
         ],
         "no-debugger": "warn"
-
-        //Added myself, contradicting with another rule
-        //"eol-last": [0]
     }
 }
