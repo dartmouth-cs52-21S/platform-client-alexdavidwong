@@ -1,57 +1,41 @@
 import {
-  BrowserRouter as Router, Route, NavLink, Switch,
+  BrowserRouter as Router, Route, Switch, NavLink,
 } from 'react-router-dom';
 import React from 'react';
-import Counter from './counter';
-import Controls from './controls';
+import Posts from './posts';
+import NewPost from './new_post';
+import SinglePost from './single_post';
+import EditPage from './edit_page';
 
-const About = (props) => {
-  return <div> All there is to know about me </div>;
-};
-
-const Welcome = (props) => {
-  return (
-    <div>
-      <Counter />
-      <Controls />
-      Welcome
-    </div>
-  );
-};
-
-const Nav = (props) => {
+const NavBar = (props) => {
   return (
     <nav>
       <ul>
         <li><NavLink to="/" exact>Home</NavLink></li>
-        <li><NavLink to="/about">About</NavLink></li>
-        <li><NavLink to="/test/id1">test id1</NavLink></li>
-        <li><NavLink to="/test/id2">test id2</NavLink></li>
+        <li><NavLink to="/posts/new">New Post</NavLink></li>
       </ul>
     </nav>
   );
 };
 
+/*
 const Test = (props) => {
-  return <div> ID: {props.match.params.id} </div>;
+  return <div>ID: {props.match.params.postID}</div>;
 };
-
-const FallBack = (props) => {
-  return <div>URL not found</div>;
-};
+*/
 
 const App = (props) => {
   return (
     <Router>
       <div>
-        <Nav />
+        <NavBar />
         <Switch>
-          <Route exact path="/" component={Welcome} />
-          <Route path="/about" component={About} />
-          <Route exact path="/test/:id" component={Test} />
-          <Route component={FallBack} />
+          <Route exact path="/" component={Posts} />
+          <Route exact path="/posts/new" component={NewPost} />
+          <Route exact path="/posts/:postID" component={SinglePost} />
+          <Route exact path="/posts/edit/:postID" component={EditPage} />
+          <Route render={() => (<div>post not found</div>)} />
         </Switch>
-
       </div>
     </Router>
   );
