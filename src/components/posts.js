@@ -21,9 +21,7 @@ class Posts extends Component {
 
     const postItems = this.props.all.map((item) => {
       return (
-
         <PostItem key={item.id} id={item.id} title={item.title} tags={item.tags} imgSrc={item.coverUrl} />
-
       );
     });
     console.log(this.props.all);

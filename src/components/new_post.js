@@ -38,12 +38,26 @@ class NewPost extends Component {
 
   render() {
     return (
-      <div>
-        <textarea onChange={this.onChangeTitle} value={this.state.title} />
-        <textarea onChange={this.onChangeImg} value={this.state.coverUrl} />
-        <textarea onChange={this.onChangeContent} value={this.state.content} />
-        <textarea onChange={this.onChangeTags} value={this.state.tags} />
-        <button type="button" onClick={() => this.props.createPost(this.state, this.props.history)}>submit</button>
+      <div className="newPostContainer">
+        <div className="newPost">
+          <div className="titleDisplay">
+            <h3>Title</h3>
+            <textarea onChange={this.onChangeTitle} value={this.state.title} />
+          </div>
+          <div className="imageDisplay">
+            <h3>Image</h3>
+            <textarea onChange={this.onChangeImg} value={this.state.coverUrl} />
+          </div>
+          <div className="tagDisplay">
+            <h3>Tags</h3>
+            <textarea onChange={this.onChangeTags} value={this.state.tags} />
+          </div>
+          <div className="contentDisplay">
+            <h3>Content</h3>
+            <textarea onChange={this.onChangeContent} value={this.state.content} />
+          </div>
+          <button type="button" onClick={() => this.props.createPost(this.state, this.props.history)}>submit</button>
+        </div>
       </div>
     );
   }

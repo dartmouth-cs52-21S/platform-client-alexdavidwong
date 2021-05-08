@@ -66,11 +66,12 @@ export function fetchSinglePost(id) {
   };
 }
 
-export function updatePost(id, post) {
+export function updatePost(id, post, history) {
   return (dispatch) => {
     // gets all of the title, tags, and id for posts
     axios.put(`${ROOT_URL}/posts/${id}${API_KEY}`, post).then((response) => {
       // passing in the data
+      history.push('/');
       dispatch({ type: ActionTypes.UPDATE_POST, payload: null });
     }).catch((error) => {
       console.log(`Could not update post:${error}`);
