@@ -11,6 +11,7 @@ export const ActionTypes = {
   CREATE_POST: 'CREATE_POST',
   DELETE_POST: 'DELETE_POST',
   UPDATE_POST: 'UPDATE_POST',
+  ERROR: 'ERROR',
 };
 
 // need to handle API calls here
@@ -19,9 +20,9 @@ export function fetchPost() {
     // gets all of the title, tags, and id for posts
     axios.get(`${ROOT_URL}/posts${API_KEY}`).then((response) => {
       // passing in the data
-      dispatch({ type: ActionTypes.FETCH_POST, payload: response.data });
+      dispatch({ type: ActionTypes.FETCH_POST, payload: { data: response.data } });
     }).catch((error) => {
-      console.log(`Could not get all posts:${error}`);
+      dispatch({ type: ActionTypes.ERROR, payload: { problem: `could not get all posts: ${error.message}` } });
     });
   };
 }
@@ -35,7 +36,7 @@ export function createPost(post, history) {
       console.log(response.data);
       dispatch({ type: ActionTypes.CREATE_POST, payload: null });
     }).catch((error) => {
-      console.log(`Could not add post:${error}`);
+      dispatch({ type: ActionTypes.ERROR, payload: { problem: `could not create post: ${error.message}` } });
     });
   };
 }
@@ -48,7 +49,7 @@ export function deletePost(id, history) {
       history.push('/');
       dispatch({ type: ActionTypes.DELETE_POST, payload: null });
     }).catch((error) => {
-      console.log(`Could not delete post:${error}`);
+      dispatch({ type: ActionTypes.ERROR, payload: { problem: `could not delete posts: ${error.message}` } });
     });
   };
 }
@@ -61,7 +62,7 @@ export function fetchSinglePost(id) {
       console.log('hello');
       dispatch({ type: ActionTypes.FETCH_SINGLE_POST, payload: response.data });
     }).catch((error) => {
-      console.log(`Could not get the post:${error}`);
+      dispatch({ type: ActionTypes.ERROR, payload: { problem: `could not fetch the post: ${error.message}` } });
     });
   };
 }
@@ -74,7 +75,7 @@ export function updatePost(id, post, history) {
       history.push('/');
       dispatch({ type: ActionTypes.UPDATE_POST, payload: null });
     }).catch((error) => {
-      console.log(`Could not update post:${error}`);
+      dispatch({ type: ActionTypes.ERROR, payload: { problem: `could not update post: ${error.message}` } });
     });
   };
 }

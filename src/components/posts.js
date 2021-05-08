@@ -9,7 +9,8 @@ class Posts extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+    };
   }
 
   componentDidMount = () => {
@@ -20,6 +21,8 @@ class Posts extends Component {
     const postSingle = this.props.all;
 
     const postItems = this.props.all.map((item) => {
+      // check if this matches the specified filters
+      //
       return (
         <PostItem key={item.id} id={item.id} title={item.title} tags={item.tags} imgSrc={item.coverUrl} />
       );
@@ -32,6 +35,7 @@ class Posts extends Component {
     return (
       <div id="allPosts">
         {this.iterateAllNotes()}
+        <h1>{this.props.prob}</h1>
       </div>
     );
   }
@@ -40,6 +44,7 @@ class Posts extends Component {
 const mapStateToProps = (reduxState) => {
   return {
     all: reduxState.posts.all,
+    prob: reduxState.posts.problem,
   };
 };
 

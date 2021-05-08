@@ -17,6 +17,7 @@ class NewPost extends Component {
       coverUrl: '',
       content: '',
       tags: '',
+      filled: null,
     };
   }
 
@@ -34,6 +35,24 @@ class NewPost extends Component {
 
   onChangeTags = (event) => {
     this.setState({ tags: event.target.value });
+  }
+
+  addPost = () => {
+    if (this.state.title === '' || this.state.coverUrl === '' || this.state.content === '' || this.state.tags === '') {
+      this.setState({ filled: false });
+    } else {
+      this.props.createPost(this.state, this.props.history);
+    }
+  }
+
+  errorMessage = () => {
+    if (this.state.filled == null) { return <div className="formEmpty" />; } else {
+      return (
+        <div className="formIncomplete">
+          <p>not all fields filled</p>
+        </div>
+      );
+    }
   }
 
   render() {
@@ -56,11 +75,19 @@ class NewPost extends Component {
             <h3>Content</h3>
             <textarea onChange={this.onChangeContent} value={this.state.content} />
           </div>
-          <button type="button" onClick={() => this.props.createPost(this.state, this.props.history)}>submit</button>
+          <button type="button" onClick={() => this.addPost()}>submit</button>
+          {this.errorMessage()}
+          <p>{this.props.prob}</p>
         </div>
       </div>
     );
   }
 }
 
-export default withRouter(connect(null, { createPost })(NewPost));
+const mapStateToProps = (reduxState) => {
+  return {
+    prob: reduxState.posts.problem,
+  };
+};
+
+export default withRouter(connect(mapStateToProps, { createPost })(NewPost));

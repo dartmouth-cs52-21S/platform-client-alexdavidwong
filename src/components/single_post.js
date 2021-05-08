@@ -103,6 +103,7 @@ class SinglePost extends Component {
             <button type="button" onClick={() => this.props.deletePost(this.props.match.params.postID, this.props.history)}>delete</button>
             <button type="button" onClick={() => this.props.updatePost(this.props.match.params.postID, this.props.current, this.props.history)}>update</button>
           </div>
+          <p>{this.props.prob}</p>
         </div>
       </div>
     );
@@ -112,6 +113,7 @@ class SinglePost extends Component {
 const mapStateToProps = (reduxState) => {
   return {
     current: reduxState.posts.current,
+    prob: reduxState.posts.problem,
   };
 };
 

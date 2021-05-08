@@ -1,21 +1,21 @@
-<<<<<<< HEAD
-# Title
+# Lab 4: Redux
 
-*description*
+*blog site that that allows users to create, update, and delete posts*
 
-[deployed url](http://url-if-deployed-here)
+[deployed url](https://flamboyant-nobel-4973fe.netlify.app)
 
 ## What Worked Well
+- implementing the components
+- interacting with the API and implementing action creators
 
 ## What Didn't
+- a little challening understanding the flow of redux
 
 ## Extra Credit
+- added validation of the input fields
+- error handling from reducer and displaying the error message on site
 
 ## Screenshots
-=======
-# SA2
-
-Site that loads an image and counts the seconds the page has been there.
-
-[deployed url](https://brave-williams-d890d6.netlify.app)
->>>>>>> 0ba2a88e3b6095a0d6d78dc72d0b26275eecef75
+[overall site](./screenShots/site.png)
+[validation of input fields](./screenShots/errorDisplay.png)
+[error handling](./screenShots/validation.png)
