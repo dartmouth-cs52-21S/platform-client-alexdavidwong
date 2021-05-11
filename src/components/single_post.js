@@ -1,6 +1,4 @@
-/* eslint-disable react/no-unused-state */
-/* eslint-disable no-unused-vars */
-import React, { useState, useEffect, Component } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';

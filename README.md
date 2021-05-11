@@ -16,6 +16,6 @@
 - error handling from reducer and displaying the error message on site
 
 ## Screenshots
-[overall site](./screenShots/site.png)
-[validation of input fields](./screenShots/errorDisplay.png)
-[error handling](./screenShots/validation.png)
+- [overall site](./screenShots/site.png)
+- [validation of input fields](./screenShots/errorDisplay.png)
+- [error handling](./screenShots/validation.png)

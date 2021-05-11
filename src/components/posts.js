@@ -1,7 +1,6 @@
-/* eslint-disable no-unused-vars */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { fetchPost } from '../actions';
 import PostItem from './post_item';
 
@@ -18,13 +17,12 @@ class Posts extends Component {
   }
 
   iterateAllNotes = () => {
-    const postSingle = this.props.all;
-
+    console.log(this.props.all);
     const postItems = this.props.all.map((item) => {
       // check if this matches the specified filters
       //
       return (
-        <PostItem key={item.id} id={item.id} title={item.title} tags={item.tags} imgSrc={item.coverUrl} />
+        <PostItem key={item._id} id={item._id} title={item.title} tags={item.tags} imgSrc={item.coverUrl} />
       );
     });
     console.log(this.props.all);
