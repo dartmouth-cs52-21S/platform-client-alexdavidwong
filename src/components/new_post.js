@@ -41,6 +41,8 @@ class NewPost extends Component {
     if (this.state.title === '' || this.state.coverUrl === '' || this.state.content === '' || this.state.tags === '') {
       this.setState({ filled: false });
     } else {
+      // spliting blogpost up
+      this.state.tags = this.state.tags.split(' ');
       this.props.createPost(this.state, this.props.history);
     }
   }

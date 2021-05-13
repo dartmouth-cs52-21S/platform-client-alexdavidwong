@@ -78,6 +78,15 @@ class SinglePost extends Component {
     );
   }
 
+  // WHY IS THIS UNDEFINED
+  tagsDisplay = () => {
+    this.props.current.tags.forEach((item, index) => {
+      console.log(item);
+    });
+    // this.props.current.tags.map((item) => console.log(item));
+    return this.props.current.tags;
+  }
+
   tagsText = () => {
     if (this.state.tagsEdit) {
       return (
@@ -99,7 +108,13 @@ class SinglePost extends Component {
           {this.contentText()}
           <div className="postButtonContainer">
             <button type="button" onClick={() => this.props.deletePost(this.props.match.params.postID, this.props.history)}>delete</button>
-            <button type="button" onClick={() => this.props.updatePost(this.props.match.params.postID, this.props.current, this.props.history)}>update</button>
+            <button type="button"
+              onClick={() => {
+                this.props.current.tags = this.props.current.tags.split(' ');
+                this.props.updatePost(this.props.match.params.postID, this.props.current, this.props.history);
+              }}
+            >update
+            </button>
           </div>
           <p>{this.props.prob}</p>
         </div>
