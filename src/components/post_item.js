@@ -4,6 +4,7 @@ import { Link, withRouter } from 'react-router-dom';
 
 const PostItem = (props) => {
   const tagsItem = () => {
+    console.log(`this is the name: ${props.authorName}`);
     let count = 0;
     const allTags = props.tags.map((item) => {
       count += 1;
@@ -20,6 +21,7 @@ const PostItem = (props) => {
       <Link key={props.id} to={`posts/${props.id}`}>
         <img src={props.imgSrc} alt="video" />
         <h1 className="title">{props.title}</h1>
+        <h2>{props.authorName}</h2>
         <ul className="tags">{tagsItem()}</ul>
       </Link>
     </div>

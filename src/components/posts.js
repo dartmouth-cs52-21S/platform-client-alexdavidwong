@@ -19,10 +19,8 @@ class Posts extends Component {
   iterateAllNotes = () => {
     console.log(this.props.all);
     const postItems = this.props.all.map((item) => {
-      // check if this matches the specified filters
-      //
       return (
-        <PostItem key={item._id} id={item._id} title={item.title} tags={item.tags} imgSrc={item.coverUrl} />
+        <PostItem key={item._id} id={item._id} authorName={item.authorName} title={item.title} tags={item.tags} imgSrc={item.coverUrl} />
       );
     });
     console.log(this.props.all);
