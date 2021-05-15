@@ -110,7 +110,9 @@ class SinglePost extends Component {
             <button type="button" onClick={() => this.props.deletePost(this.props.match.params.postID, this.props.history)}>delete</button>
             <button type="button"
               onClick={() => {
-                this.props.current.tags = this.props.current.tags.split(' ');
+                if (this.state.tagsEdit) {
+                  this.props.current.tags = this.props.current.tags.split(' ');
+                }
                 this.props.updatePost(this.props.match.params.postID, this.props.current, this.props.history);
               }}
             >update
