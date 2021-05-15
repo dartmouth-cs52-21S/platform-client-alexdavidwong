@@ -7,6 +7,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { createPost } from '../actions';
+import { uploadImage } from '../s3';
 
 class NewPost extends Component {
   constructor(props) {
@@ -18,6 +19,8 @@ class NewPost extends Component {
       content: '',
       tags: '',
       filled: null,
+      preview: '',
+      file: null,
     };
   }
 
@@ -37,13 +40,24 @@ class NewPost extends Component {
     this.setState({ tags: event.target.value });
   }
 
+  onImageUpload(event) {
+    const file = event.target.files[0];
+    // Handle null file
+    // Get url of the file and set it to the src of preview
+    if (file) {
+      this.setState({ preview: window.URL.createObjectURL(file), file });
+    }
+  }
+
   addPost = () => {
-    if (this.state.title === '' || this.state.coverUrl === '' || this.state.content === '' || this.state.tags === '') {
-      this.setState({ filled: false });
-    } else {
-      // spliting blogpost up
-      this.state.tags = this.state.tags.split(' ');
-      this.props.createPost(this.state, this.props.history);
+    if (this.state.file) {
+      uploadImage(this.state.file).then((url) => {
+        this.state.coverUrl = url;
+        this.state.tags = this.state.tags.split(' ');
+        this.props.createPost(this.state, this.props.history);
+      }).catch((error) => {
+        console.log(error);
+      });
     }
   }
 
@@ -61,6 +75,8 @@ class NewPost extends Component {
     return (
       <div className="newPostContainer">
         <div className="newPost">
+          <img id="preview" alt="preview" src={this.state.preview} />
+          <input type="file" name="coverImage" onChange={this.onImageUpload} />
           <div className="titleDisplay">
             <h3>Title</h3>
             <textarea onChange={this.onChangeTitle} value={this.state.title} />

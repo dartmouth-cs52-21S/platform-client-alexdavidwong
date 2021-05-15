@@ -6,6 +6,7 @@ import thunk from 'redux-thunk';
 import reducers from './reducers';
 import App from './components/app';
 import './style.scss';
+import { ActionTypes } from './actions';
 
 // this creates the store with the reducers, and does some other stuff to initialize devtools
 // boilerplate to copy, don't have to know
@@ -15,10 +16,10 @@ const store = createStore(reducers, {}, compose(
 ));
 
 // WHERE DOES THIS GO?
-/* const token = localStorage.getItem('token');
+const token = localStorage.getItem('token');
 if (token) {
   store.dispatch({ type: ActionTypes.AUTH_USER });
-} */
+}
 
 // we now wrap App in a Provider
 ReactDOM.render(
