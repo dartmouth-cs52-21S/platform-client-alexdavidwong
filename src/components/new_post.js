@@ -20,7 +20,7 @@ class NewPost extends Component {
       tags: '',
       filled: null,
       preview: '',
-      file: null,
+      file: '',
     };
   }
 
@@ -40,7 +40,7 @@ class NewPost extends Component {
     this.setState({ tags: event.target.value });
   }
 
-  onImageUpload(event) {
+  onImageUpload = (event) => {
     const file = event.target.files[0];
     // Handle null file
     // Get url of the file and set it to the src of preview
