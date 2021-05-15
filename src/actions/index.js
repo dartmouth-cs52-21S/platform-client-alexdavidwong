@@ -3,7 +3,8 @@ import axios from 'axios';
 // our api calls
 // const ROOT_URL = 'https://platform.cs52.me/api';
 // const ROOT_URL = 'https://blogpost-lab5-alexdavidwong.herokuapp.com/api';
-const ROOT_URL = 'https://sa7-auth-alexdavidwong.herokuapp.com/api';
+// const ROOT_URL = 'https://sa7-auth-alexdavidwong.herokuapp.com/api';
+const ROOT_URL = 'https://blog-post-ec-s3.herokuapp.com/api';
 // const ROOT_URL = 'http://localhost:9090/api';
 const API_KEY = '?key=a_wong';
 
